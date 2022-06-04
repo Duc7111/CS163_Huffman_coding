@@ -65,7 +65,7 @@ int main()
         head = a.Get();
         head->str_ki_tu += "0";
     }
-    //
+    
     //cout << str << endl;
     //cout << "-------------" << endl;
     string str123;
@@ -76,16 +76,20 @@ int main()
         tree.AddString(head, str_ki_tu, arr1);
     }
     
-    //for (int i = 0; i < arr1.size(); i++)
-    //{
-    //    cout << arr1[i]->str << "-" << arr1[i]->str_ki_tu << "-" << arr1[i]->data << endl;
-    //}
+    for (int i = 0; i < arr1.size(); i++)
+    {
+        cout << arr1[i]->str << "-" << arr1[i]->str_ki_tu << "-" << arr1[i]->data << endl;
+    }
 
-    tree.printBST_2D(head, 0);
+    //tree.printBST_2D(head, 0);
     string* str_encode = new string[str.length()];
 
     cout << "-------------" << endl;
     tree.Encode(arr1, str, str123);
     cout <<str <<" : "<< str123 << endl;
+
+    cout << "-------------" << endl;
+    string str_decoded = tree.decode(str123, arr1);
+    cout << str123 << " : " << str_decoded << endl;
     return 0;
 }
