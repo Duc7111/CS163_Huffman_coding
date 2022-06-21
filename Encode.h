@@ -1,5 +1,6 @@
 #pragma once
 #include "vector"
+#include "Heap.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -83,7 +84,7 @@ public:
 };
 
 
-template<class T>
+/* template<class T>
 class minHeap
 {
 private: 
@@ -138,4 +139,4 @@ public:
     {
 
     }
-};
+}; */

@@ -1,4 +1,5 @@
-#include "Header.h"
+#include "Decode.h"
+#include "Encode.h"
 
 
 Node* CreateNode(int data)

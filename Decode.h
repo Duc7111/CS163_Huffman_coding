@@ -1,12 +1,13 @@
 #pragma once
 #include "vector"
+#include "Heap.h"
 #include <iostream>
 #include <string>
 using namespace std;
 
 struct Node {
-    string str = ""; // kí t? mà nó mã hoá
-    string str_ki_tu = ""; // kí t? mã hoá
+    string str = ""; // kï¿½ t? mï¿½ nï¿½ mï¿½ hoï¿½
+    string str_ki_tu = ""; // kï¿½ t? mï¿½ hoï¿½
     int data = 0; // s? l?n xu?t hi?n
     Node* pRight = NULL;
     Node* pLeft = NULL;
@@ -105,7 +106,7 @@ public:
 };
 
 
-template<class T>
+/* template<class T>
 class minHeap
 {
 private: 
@@ -162,4 +163,4 @@ public:
     {
         
     }
-};
+}; */
