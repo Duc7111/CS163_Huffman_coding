@@ -3,6 +3,7 @@
 #include "Heap.h"
 #include <iostream>
 #include <string>
+#include <cstring>
 using namespace std;
 
 struct Node {
@@ -97,11 +98,13 @@ public:
         pRoot->str_ki_tu = str;
         if (pRoot->pLeft)
         {
-            AddString(pRoot->pLeft,  str + "0",arr);
+            string temp = str + "0";
+            AddString(pRoot->pLeft, temp, arr);
         }
         if (pRoot->pRight)
         {
-            AddString(pRoot->pRight, str + "1",arr);
+            string temp = str + "1";
+            AddString(pRoot->pRight, temp, arr);
         }
     }
 

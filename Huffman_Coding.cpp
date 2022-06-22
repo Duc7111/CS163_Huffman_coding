@@ -51,9 +51,9 @@ int main()
     {
         while (a.Size() > 1)
         {
-            Node node = a.getRoot();
-            Node node1 = a.getRoot();
-            head = tree.CreateHead(&node, &node1);
+            Node *node = new Node(a.getRoot());
+            Node *node1 = new Node(a.getRoot());
+            head = tree.CreateHead(node, node1);
             a.insert(*head);
 
         }
