@@ -10,7 +10,7 @@ class minHeap
 
     public:
 
-    minHeap(T* arr, int n) : T(arr), size(n), m_size(n)
+    minHeap(T* arr, int n) : heap(arr), size(n), m_size(n)
     {
         for(int i = 1; i < size; ++i)
         {
@@ -42,7 +42,7 @@ class minHeap
         int i = size++;
         while(i >= 0)
         {
-            int t = (i - 1)/2
+            int t = (i - 1)/2;
             if(heap[i] < heap[t])
             {
                 heap[i] = heap[t];
@@ -55,7 +55,7 @@ class minHeap
 
     T getRoot()
     {
-        if(size == 0) return NULL;
+        if(size == 0) return nullptr;
         heap[0] = heap[--size];
         int i = 0;
         while(i*2 + 2 < size)
@@ -81,5 +81,10 @@ class minHeap
             heap[0] = temp;
         } 
         return heap[size];
+    }
+
+    int Size()
+    {
+        return size;
     }
 };

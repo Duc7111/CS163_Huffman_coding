@@ -1,5 +1,4 @@
-#include "Decode.h"
-#include "Encode.h"
+#include "Huffman_Tree.h"
 
 
 Node* CreateNode(int data)
@@ -25,11 +24,11 @@ void Delete_Duplicated_String(string& str)
 }
 int main()
 {
-    vector<Node*>arr1;
     string str;
     cout << "Input string = "; getline(cin, str);
     string str1 = str;
     Delete_Duplicated_String(str1);
+    Node** arr1 = new Node*[str1.length()]; 
     for (int i = 0; i < str1.length(); i++)
     {
         int count = 0;
@@ -44,10 +43,10 @@ int main()
         Node *node = new Node;
         node->data = count;
         node->str += str1[i];
-        arr1.push_back(node);
+        arr1[i] = node;
     }
 
-    minHeap<vector<Node*>>a(arr1);
+    minHeap<Node*>a(arr1, str1.length());
     Huffman_Tree tree;
     cout << endl;
     Node* head = nullptr;
@@ -55,42 +54,42 @@ int main()
     {
         while (a.Size() > 1)
         {
-            Node* node = a.Get();
-            Node* node1 = a.Get();
+            Node* node = a.getRoot();
+            Node* node1 = a.getRoot();
             head = tree.CreateHead(node, node1);
-            a.Recieve(head);
+            a.insert(head);
 
         }
     }
     else {
-        head = a.Get();
+        head = a.getRoot();
         head->str_ki_tu += "0";
     }
-    
+    vector<Node*> arr2;
     //cout << str << endl;
     //cout << "-------------" << endl;
     string str123;
+    
     if (head && head->str_ki_tu == "") {
         string str_ki_tu = "";
-        
-        arr1.clear();
-        tree.AddString(head, str_ki_tu, arr1);
+        tree.AddString(head, str_ki_tu, arr2);
     }
     
-    for (int i = 0; i < arr1.size(); i++)
+    for (int i = 0; i < arr2.size(); i++)
     {
-        cout << arr1[i]->str << "-" << arr1[i]->str_ki_tu << "-" << arr1[i]->data << endl;
+        cout << arr2[i]->str << "-" << arr2[i]->str_ki_tu << "-" << arr2[i]->data << endl;
     }
 
-    //tree.printBST_2D(head, 0);
+    tree.printBST_2D(head, 0);
     string* str_encode = new string[str.length()];
 
     cout << "-------------" << endl;
-    tree.Encode(arr1, str, str123);
+    tree.Encode(arr2, str, str123);
     cout <<str <<" : "<< str123 << endl;
 
     cout << "-------------" << endl;
-    string str_decoded = tree.decode(str123, arr1);
+    string str_decoded = tree.decode(str123, arr2);
     cout << str123 << " : " << str_decoded << endl;
+    cin.get();
     return 0;
 }

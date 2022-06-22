@@ -28,8 +28,26 @@ public:
         pHead = new_node;
         return pHead;
     }
-    string decode(vector<string> str) {
-
+    string decode(string str, vector<Node*> arr) 
+    {
+        string decoded_str = "";
+        string temp = ""; 
+        int j;
+        for (int i = 0; i < str.length(); ++i) 
+        {
+            temp += str[i];
+            for (j = 0; j < arr.size(); ++j) {
+                if (temp == arr[j]->str_ki_tu && arr[j]->data) {
+                    --arr[j]->data;
+                    decoded_str += arr[j]->str;
+                    break;
+                }
+            }
+            if (j != arr.size()) {
+                temp = "";
+            }
+        } 
+        return decoded_str;
     }
 
     void Print_NLR(Node* root)
