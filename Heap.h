@@ -55,7 +55,7 @@ class minHeap
 
     T getRoot()
     {
-        if(size == 0) return nullptr;
+        //if(size == 0) return nullptr;
         heap[0] = heap[--size];
         int i = 0;
         while(i*2 + 2 < size)

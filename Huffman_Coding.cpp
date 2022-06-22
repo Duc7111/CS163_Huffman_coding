@@ -28,7 +28,7 @@ int main()
     cout << "Input string = "; getline(cin, str);
     string str1 = str;
     Delete_Duplicated_String(str1);
-    Node** arr1 = new Node*[str1.length()]; 
+    Node* arr1 = new Node[str1.length()]; 
     for (int i = 0; i < str1.length(); i++)
     {
         int count = 0;
@@ -39,14 +39,11 @@ int main()
                 count++;
             }
         }
-
-        Node *node = new Node;
-        node->data = count;
-        node->str += str1[i];
-        arr1[i] = node;
+        arr1[i].data = count;
+        arr1[i].str += str1[i];
     }
 
-    minHeap<Node*>a(arr1, str1.length());
+    minHeap<Node> a(arr1, str1.length());
     Huffman_Tree tree;
     cout << endl;
     Node* head = nullptr;
@@ -54,15 +51,15 @@ int main()
     {
         while (a.Size() > 1)
         {
-            Node* node = a.getRoot();
-            Node* node1 = a.getRoot();
-            head = tree.CreateHead(node, node1);
-            a.insert(head);
+            Node node = a.getRoot();
+            Node node1 = a.getRoot();
+            head = tree.CreateHead(&node, &node1);
+            a.insert(*head);
 
         }
     }
     else {
-        head = a.getRoot();
+        *head = a.getRoot();
         head->str_ki_tu += "0";
     }
     vector<Node*> arr2;

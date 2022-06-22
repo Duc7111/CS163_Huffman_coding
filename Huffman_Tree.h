@@ -11,6 +11,27 @@ struct Node {
     int data = 0;
     Node* pRight = NULL;
     Node* pLeft = NULL;
+
+    bool operator <(Node x)
+    {
+        if(data < x.data) return true;
+        return false;
+    }
+    bool operator >(Node x)
+    {
+        if(data > x.data) return true;
+        return false;
+    }
+    bool operator <=(Node x)
+    {
+        if(data <= x.data) return true;
+        return false;
+    }
+    bool operator >=(Node x)
+    {
+        if(data >= x.data) return true;
+        return false;
+    }
 };
 class Huffman_Tree {
 private:
